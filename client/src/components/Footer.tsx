@@ -70,14 +70,14 @@ export default function Footer() {
             <div className="space-y-3 text-sm">
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 flex-shrink-0 text-background/80" />
-                <a href="mailto:tennis919@example.com" className="text-background/80 hover:text-background transition-colors" data-testid="link-email">
-                  tennis919@example.com
+                <a href="mailto:coach.tennis919@gmail.com" className="text-background/80 hover:text-background transition-colors" data-testid="link-email">
+                  coach.tennis919@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 flex-shrink-0 text-background/80" />
-                <a href="tel:+19195551234" className="text-background/80 hover:text-background transition-colors" data-testid="link-phone">
-                  (919) 555-1234
+                <a href="tel:+19196676994" className="text-background/80 hover:text-background transition-colors" data-testid="link-phone">
+                  919-667-6994
                 </a>
               </div>
             </div>
