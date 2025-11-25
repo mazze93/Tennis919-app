@@ -1,6 +1,7 @@
-import { Button } from "@/components/ui/button";
+import { LinkButton } from "@/components/ui/link-button";
 import { Calendar, ShoppingBag } from "lucide-react";
 import heroImg from "@assets/IMG_1748_1764042857651.jpeg";
+import { EXTERNAL_LINKS } from "@/lib/constants";
 
 export default function Hero() {
   return (
@@ -21,25 +22,25 @@ export default function Hero() {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
-          <Button
+          <LinkButton
+            href={EXTERNAL_LINKS.calendly.main}
             size="lg"
             className="bg-accent hover:bg-accent text-accent-foreground w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 shadow-xl"
-            onClick={() => (window.location.href = "https://calendly.com/tennis919")}
             data-testid="button-book-lesson-hero"
           >
             <Calendar className="mr-2 h-5 w-5" />
             Book a Lesson
-          </Button>
-          <Button
+          </LinkButton>
+          <LinkButton
+            href="/shop"
             size="lg"
             variant="outline"
             className="border-2 border-white text-white hover:bg-white/15 w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 shadow-xl"
-            onClick={() => (window.location.href = "/shop")}
             data-testid="button-shop-hero"
           >
             <ShoppingBag className="mr-2 h-5 w-5" />
             Shop Collection
-          </Button>
+          </LinkButton>
         </div>
       </div>
     </section>

@@ -1,14 +1,9 @@
+import { Link } from "wouter";
 import { MapPin, Clock, Mail, Phone, Heart } from "lucide-react";
 import logoImg from "@assets/logo.jpg";
+import { FOOTER_QUICK_LINKS, EXTERNAL_LINKS } from "@/lib/constants";
 
 export default function Footer() {
-  const quickLinks = [
-    { label: "Private Lessons", href: "/lessons#privates" },
-    { label: "Duos Coaching", href: "/lessons#duos" },
-    { label: "Group Clinics", href: "/lessons#beginner" },
-    { label: "Shop Apparel", href: "/shop" },
-    { label: "About Us", href: "/about" },
-  ];
 
   return (
     <footer className="bg-foreground text-background py-12 md:py-16" data-testid="footer-main">
@@ -31,19 +26,13 @@ export default function Footer() {
           <div>
             <h3 className="font-heading font-semibold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              {quickLinks.map((link, index) => (
+              {FOOTER_QUICK_LINKS.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      window.location.href = link.href;
-                    }}
-                    className="text-background/80 hover:text-background text-sm transition-colors hover-elevate px-1 py-0.5 rounded-sm inline-block" 
-                    data-testid={`link-footer-${index}`}
-                  >
-                    {link.label}
-                  </a>
+                  <Link href={link.href}>
+                    <a className="text-background/80 hover:text-background text-sm transition-colors hover-elevate px-1 py-0.5 rounded-sm inline-block" data-testid={`link-footer-${index}`}>
+                      {link.label}
+                    </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -55,9 +44,9 @@ export default function Footer() {
               <div className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0 text-background/80" />
                 <div>
-                  <p className="text-background/90 font-medium">Rock Quarry Park</p>
-                  <p className="text-background/70">701 Stadium Drive</p>
-                  <p className="text-background/70">Durham, NC</p>
+                  <p className="text-background/90 font-medium">{EXTERNAL_LINKS.location.name}</p>
+                  <p className="text-background/70">{EXTERNAL_LINKS.location.address}</p>
+                  <p className="text-background/70">{EXTERNAL_LINKS.location.city}</p>
                 </div>
               </div>
               <div className="flex items-start gap-2">
@@ -75,14 +64,14 @@ export default function Footer() {
             <div className="space-y-3 text-sm">
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 flex-shrink-0 text-background/80" />
-                <a href="mailto:coach.tennis919@gmail.com" className="text-background/80 hover:text-background transition-colors" data-testid="link-email">
-                  coach.tennis919@gmail.com
+                <a href={`mailto:${EXTERNAL_LINKS.contact.email}`} className="text-background/80 hover:text-background transition-colors" data-testid="link-email">
+                  {EXTERNAL_LINKS.contact.email}
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 flex-shrink-0 text-background/80" />
-                <a href="tel:+19196676994" className="text-background/80 hover:text-background transition-colors" data-testid="link-phone">
-                  919-667-6994
+                <a href={`tel:${EXTERNAL_LINKS.contact.phone}`} className="text-background/80 hover:text-background transition-colors" data-testid="link-phone">
+                  {EXTERNAL_LINKS.contact.phoneFormatted}
                 </a>
               </div>
             </div>

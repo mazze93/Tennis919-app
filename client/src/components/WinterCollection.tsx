@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { LinkButton } from "@/components/ui/link-button";
 import ProductCard from "./ProductCard";
 import { ArrowRight } from "lucide-react";
 import windbreaker from "@assets/generated_images/retro_forest_green_windbreaker.png";
@@ -62,10 +62,10 @@ export default function WinterCollection() {
         </div>
 
         <div className="text-center">
-          <Button variant="outline" size="lg" onClick={() => (window.location.href = "/shop")} data-testid="button-view-all">
+          <LinkButton href="/shop" variant="outline" size="lg" data-testid="button-view-all">
             View Full Collection
             <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          </LinkButton>
         </div>
       </div>
     </section>

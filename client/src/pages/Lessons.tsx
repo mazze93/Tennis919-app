@@ -1,82 +1,11 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { LinkButton } from "@/components/ui/link-button";
 import { Badge } from "@/components/ui/badge";
-import { Users, User, Heart, Zap } from "lucide-react";
+import { LESSONS_DATA, EXTERNAL_LINKS } from "@/lib/constants";
 
 export default function Lessons() {
-  const lessons = [
-    {
-      id: "privates",
-      icon: User,
-      title: "Private Lessons",
-      description: "One-on-one personalized coaching tailored to your specific goals and skill level.",
-      price: "$60-$80",
-      duration: "per hour",
-      features: [
-        "Customized training plan",
-        "Video analysis of your technique",
-        "Flexible scheduling (7 days/week)",
-        "All skill levels welcome",
-        "Focus on your weak areas",
-      ],
-      calendlyLink: "https://calendly.com/tennis919/privates",
-      color: "bg-primary",
-    },
-    {
-      id: "duos",
-      icon: Users,
-      title: "Duos Coaching",
-      description: "Perfect for partners, friends, or family members who want to improve together.",
-      price: "$40-$50",
-      duration: "per person/hour",
-      features: [
-        "Train with a partner",
-        "Doubles strategy coaching",
-        "Team building focus",
-        "Shared progress tracking",
-        "Social, supportive environment",
-      ],
-      calendlyLink: "https://calendly.com/tennis919/duos",
-      popular: true,
-      color: "bg-secondary",
-    },
-    {
-      id: "beginner",
-      icon: Heart,
-      title: "Beginner Clinic",
-      description: "Group sessions perfect for those starting their tennis journey.",
-      price: "$20",
-      duration: "per session",
-      features: [
-        "Fundamentals & footwork",
-        "Racket grip & stance",
-        "Basic forehand/backhand",
-        "Fun, welcoming group",
-        "Every week at Rock Quarry Park",
-      ],
-      calendlyLink: "https://calendly.com/tennis919/beginner-clinic",
-      color: "bg-accent",
-    },
-    {
-      id: "intermediate",
-      icon: Zap,
-      title: "Intermediate Clinic",
-      description: "Build on your fundamentals with stroke refinement and strategy.",
-      price: "$20",
-      duration: "per session",
-      features: [
-        "Stroke refinement",
-        "Serve & volley technique",
-        "Game strategy & tactics",
-        "Competitive drills",
-        "Weekly group sessions",
-      ],
-      calendlyLink: "https://calendly.com/tennis919/intermediate",
-      color: "bg-secondary",
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -95,7 +24,7 @@ export default function Lessons() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-              {lessons.map((lesson) => {
+              {LESSONS_DATA.map((lesson) => {
                 const Icon = lesson.icon;
                 return (
                   <Card
@@ -135,16 +64,16 @@ export default function Lessons() {
                     </CardContent>
 
                     <CardFooter>
-                      <Button
+                      <LinkButton
+                        href={lesson.calendlyLink}
                         className="w-full text-white"
                         style={{
                           backgroundColor: lesson.color === "bg-primary" ? "hsl(152 32% 28%)" : lesson.color === "bg-secondary" ? "hsl(27 87% 67%)" : "hsl(9 75% 61%)",
                         }}
-                        onClick={() => (window.location.href = lesson.calendlyLink)}
                         data-testid={`button-book-${lesson.id}`}
                       >
                         Schedule Now →
-                      </Button>
+                      </LinkButton>
                     </CardFooter>
                   </Card>
                 );
@@ -160,13 +89,13 @@ export default function Lessons() {
               <p className="text-lg mb-8 max-w-2xl mx-auto text-background/95">
                 Contact us directly to discuss custom coaching packages, group rates, or special requests.
               </p>
-              <Button
+              <LinkButton
+                href={EXTERNAL_LINKS.calendly.main}
                 variant="outline"
                 className="border-background/50 text-background hover:bg-background/20"
-                onClick={() => (window.location.href = "https://calendly.com/tennis919")}
               >
                 Contact Us
-              </Button>
+              </LinkButton>
             </div>
           </div>
         </section>

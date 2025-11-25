@@ -1,39 +1,10 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { LinkButton } from "@/components/ui/link-button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Users, User } from "lucide-react";
+import { Calendar } from "lucide-react";
+import { SERVICES_DATA } from "@/lib/constants";
 
 export default function ServicesGrid() {
-  const services = [
-    {
-      icon: User,
-      title: "Private Lessons",
-      description: "Personalized one-on-one coaching tailored to your needs for focused skill development and rapid improvement.",
-      price: "$60-$80",
-      duration: "per hour",
-      features: ["Singles coaching", "Personalized drills", "Video analysis", "Flexible scheduling"],
-      calendlyLink: "https://calendly.com/tennis919/privates",
-    },
-    {
-      icon: Users,
-      title: "Duos Coaching",
-      description: "Improve your tennis skills together with a partner, friend, family member, or significant other in a supportive environment.",
-      price: "$40-$50",
-      duration: "per person/hour",
-      features: ["Partner training", "Doubles strategies", "Team building", "Shared progress"],
-      calendlyLink: "https://calendly.com/tennis919/duos",
-      popular: true,
-    },
-    {
-      icon: Users,
-      title: "Group Clinics",
-      description: "Fun and interactive sessions for players of all levels to improve their skills in a social, community-focused setting.",
-      price: "$20",
-      duration: "per session",
-      features: ["Beginner to Advanced", "Weekly sessions", "Social atmosphere", "Rock Quarry Park"],
-      calendlyLink: "https://calendly.com/tennis919/beginner-clinic",
-    },
-  ];
 
   return (
     <section className="py-16 md:py-24 bg-muted/30" data-testid="section-services">
@@ -48,7 +19,7 @@ export default function ServicesGrid() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {services.map((service, index) => {
+          {SERVICES_DATA.map((service, index) => {
             const Icon = service.icon;
             return (
               <Card
@@ -85,14 +56,14 @@ export default function ServicesGrid() {
                 </CardContent>
 
                 <CardFooter>
-                  <Button
+                  <LinkButton
+                    href={service.calendlyLink}
                     className="w-full bg-accent hover:bg-accent text-accent-foreground"
-                    onClick={() => (window.location.href = "https://calendly.com/tennis919")}
                     data-testid={`button-book-${index}`}
                   >
                     <Calendar className="mr-2 h-4 w-4" />
                     Book Now
-                  </Button>
+                  </LinkButton>
                 </CardFooter>
               </Card>
             );
