@@ -33,4 +33,4 @@ Requires `DATABASE_URL` (PostgreSQL connection string) in the environment.
 
 ## License
 
-[MIT](LICENSE) — pending merge of the license PR.
+MIT — pending merge of the license PR.
